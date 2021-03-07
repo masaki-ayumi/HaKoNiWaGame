@@ -26,9 +26,10 @@
     <ClCompile Include="Library\sceneBase.cpp">
       <Filter>Library</Filter>
     </ClCompile>
+    <ClCompile Include="Source\axis.cpp" />
+    <ClCompile Include="Source\camera.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Source\config.h" />
     <ClInclude Include="Source\sceneFactory.h" />
     <ClInclude Include="Library\app.h">
       <Filter>Library</Filter>
@@ -54,6 +55,11 @@
     <ClInclude Include="Source\debugScreen.h">
       <Filter>common</Filter>
     </ClInclude>
+    <ClInclude Include="Source\config.h">
+      <Filter>TitleScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\axis.h" />
+    <ClInclude Include="Source\camera.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Library">

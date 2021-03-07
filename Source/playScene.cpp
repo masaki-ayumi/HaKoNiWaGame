@@ -1,9 +1,13 @@
 #include "playScene.h"
 #include "../Library/sceneManager.h"
 #include "DebugScreen.h"
+#include "axis.h"
+#include "camera.h"
 
 PlayScene::PlayScene()
 {
+	CreateGameObject<Axis>();
+	CreateGameObject<Camera>();
 }
 
 PlayScene::~PlayScene()
