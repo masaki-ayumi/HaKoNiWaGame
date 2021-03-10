@@ -28,6 +28,7 @@
     </ClCompile>
     <ClCompile Include="Source\axis.cpp" />
     <ClCompile Include="Source\camera.cpp" />
+    <ClCompile Include="Source\field.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\sceneFactory.h" />
@@ -60,6 +61,7 @@
     </ClInclude>
     <ClInclude Include="Source\axis.h" />
     <ClInclude Include="Source\camera.h" />
+    <ClInclude Include="Source\field.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Library">

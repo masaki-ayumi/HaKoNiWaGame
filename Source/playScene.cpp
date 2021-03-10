@@ -3,11 +3,15 @@
 #include "DebugScreen.h"
 #include "axis.h"
 #include "camera.h"
+#include "field.h"
 
 PlayScene::PlayScene()
 {
 	CreateGameObject<Axis>();
-	CreateGameObject<Camera>();
+	Camera* pCam = CreateGameObject<Camera>();
+	SetDrawOrder(pCam, 1);
+	CreateGameObject<Field>();
+
 }
 
 PlayScene::~PlayScene()
