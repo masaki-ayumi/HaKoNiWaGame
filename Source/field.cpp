@@ -23,6 +23,7 @@ void Field::Update()
 
 void Field::Draw()
 {
+	MV1SetPosition(hModel, VGet(-300, 0, 0));
 	MV1DrawModel(hModel);
 	MV1DrawModel(hSkyModel);
 }
