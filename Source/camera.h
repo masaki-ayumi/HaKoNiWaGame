@@ -13,4 +13,6 @@ private:
 	VECTOR position;
 	VECTOR rotation;
 	VECTOR target;
+	
+	float length= 500.0f;//‰~‰^“®‚Ì”¼Œa(’‹“_‚©‚ç‚Ì‹——£)
 };
