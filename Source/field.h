@@ -8,4 +8,5 @@ public:
 	void Update();
 	void Draw();
 	int hModel;
+	int hSkyModel;
 };
