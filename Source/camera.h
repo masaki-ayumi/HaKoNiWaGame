@@ -8,8 +8,9 @@ public:
 	~Camera();
 	void Update();
 	void Draw();
-	void Yrot(); //(VECTOR add);
-	void Zrot(); //(VECTOR add);
+	void Yrot(VECTOR add);
+	void Zrot(VECTOR add);
+	
 private:
 	VECTOR position;
 	VECTOR rotation;
