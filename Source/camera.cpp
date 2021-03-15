@@ -66,6 +66,9 @@ void Camera::Update()
 	{
 		rotation.y -= 3.0f*DX_PI_F / 180.0f;
 
+		MATRIX rotY = MGetRotY(rotation.y);
+		position = VTransform(position, rotY);
+
 #if 0 //OŠpŠÖ”‚ğg‚Á‚½‰ñ“]
 		add.x += cosf(rotation.y)*length;
 		add.z += sinf(rotation.y)*length;
@@ -81,9 +84,15 @@ void Camera::Update()
 	}
 	if (CheckHitKey(KEY_INPUT_UP))
 	{
+		rotation.x += 3.0f*DX_PI_F / 180.0f;
+		rotation.x = min(rotation.x ,1.5f);
+
+		MATRIX rotX = MGetRotX(rotation.x);
+		position = VTransform(position, rotX);
+
+#if 0 //OŠpŠÖ”‚ğg‚Á‚½‰ñ“]
 		rotation.z += 3.0f*DX_PI_F / 180.0f;
 		rotation.z = min(rotation.z, 1.5f);
-#if 0 //OŠpŠÖ”‚ğg‚Á‚½‰ñ“]
 		//add.x += cosf(rotation.y)*length;
 		//add.z += sinf(rotation.y)*length;
 
@@ -98,10 +107,16 @@ void Camera::Update()
 	}
 	if (CheckHitKey(KEY_INPUT_DOWN))
 	{
+		rotation.x -= 3.0f*DX_PI_F / 180.0f;
+		rotation.x = max(rotation.x, -1.5f);
+
+		MATRIX rotX = MGetRotX(rotation.x);
+		position = VTransform(position, rotX);
+
+#if 0 //OŠpŠÖ”‚ğg‚Á‚½‰ñ“]
 		rotation.z -= 3.0f*DX_PI_F / 180.0f;
 		rotation.z = max(rotation.z, -1.5f);
 
-#if 0 //OŠpŠÖ”‚ğg‚Á‚½‰ñ“]
 		//add.x += cosf(rotation.y)*length;
 		//add.z += sinf(rotation.y)*length;
 
