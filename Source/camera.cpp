@@ -17,29 +17,10 @@ Camera::~Camera()
 
 void Camera::Update()
 {
-#if 0
-	if (CheckHitKey(KEY_INPUT_UP))
-	{
-		position.y += 20.0;
-	}
-	if (CheckHitKey(KEY_INPUT_DOWN))
-	{
-		position.y -= 20.0;
-	}
-	if (CheckHitKey(KEY_INPUT_RIGHT))
-	{
-		position.x += 20.0;
-		position.z += 20.0;
-	}
-	if (CheckHitKey(KEY_INPUT_LEFT))
-	{
-		position.x -= 20.0;
-		position.z -= 20.0;
-	}
-#endif // 0
-#if 1
+
 	VECTOR add = VGet(0, 0, 0);//カメラの注視点に足すための変数
 
+#if 0//回転行列
 	//右回転
 	if (CheckHitKey(KEY_INPUT_RIGHT))
 	{
@@ -48,18 +29,6 @@ void Camera::Update()
 		MATRIX rotY = MGetRotY(rotation.y);
 		position = VTransform(position, rotY);
 
-#if 0 //三角関数を使った回転
-		add.x += cosf(rotation.y)*length;
-		add.z += sinf(rotation.y)*length;
-
-		//add.x += cosf(rotation.z)*length;
-		//add.y += sinf(rotation.z)*length;
-		//Yrot(add);
-		//注視点を見つめる円運動をカメラ座標に代入
-		position.x = target.x + add.x;
-		position.y = target.y + add.y;
-		position.z = target.z + add.z;
-#endif // 0
 	}
 	//左回転
 	if (CheckHitKey(KEY_INPUT_LEFT))
@@ -69,41 +38,15 @@ void Camera::Update()
 		MATRIX rotY = MGetRotY(rotation.y);
 		position = VTransform(position, rotY);
 
-#if 0 //三角関数を使った回転
-		add.x += cosf(rotation.y)*length;
-		add.z += sinf(rotation.y)*length;
-
-		//add.x += cosf(rotation.z)*length;
-		//add.y += sinf(rotation.z)*length;
-		//Yrot(add);
-		//注視点を見つめる円運動をカメラ座標に代入
-		position.x = target.x + add.x;
-		position.y = target.y + add.y;
-		position.z = target.z + add.z;
-#endif // 0
 	}
 	if (CheckHitKey(KEY_INPUT_UP))
 	{
 		rotation.x += 3.0f*DX_PI_F / 180.0f;
-		rotation.x = min(rotation.x ,1.5f);
+		rotation.x = min(rotation.x, 1.5f);
 
 		MATRIX rotX = MGetRotX(rotation.x);
 		position = VTransform(position, rotX);
 
-#if 0 //三角関数を使った回転
-		rotation.z += 3.0f*DX_PI_F / 180.0f;
-		rotation.z = min(rotation.z, 1.5f);
-		//add.x += cosf(rotation.y)*length;
-		//add.z += sinf(rotation.y)*length;
-
-		add.x += cosf(rotation.z)*length;
-		add.y += sinf(rotation.z)*length;
-		//Zrot(add);
-		//注視点を見つめる円運動をカメラ座標に代入
-		position.x = target.x + add.x;
-		position.y = target.y + add.y;
-		position.z = target.z + add.z;
-#endif // 0
 	}
 	if (CheckHitKey(KEY_INPUT_DOWN))
 	{
@@ -113,36 +56,96 @@ void Camera::Update()
 		MATRIX rotX = MGetRotX(rotation.x);
 		position = VTransform(position, rotX);
 
-#if 0 //三角関数を使った回転
-		rotation.z -= 3.0f*DX_PI_F / 180.0f;
-		rotation.z = max(rotation.z, -1.5f);
-
-		//add.x += cosf(rotation.y)*length;
-		//add.z += sinf(rotation.y)*length;
-
+	}
+#endif // 1
+#if 1 //三角関数を使った回転
+	//右回転
+	if (CheckHitKey(KEY_INPUT_RIGHT))
+	{
+		rotation.y += 3.0f*DX_PI_F / 180.0f;
+#if 0
 		add.x += cosf(rotation.z)*length;
 		add.y += sinf(rotation.z)*length;
-		//Zrot(add);
+		add.x += cosf(rotation.y)*length;
+		add.z += sinf(rotation.y)*length;
+		add.y += sinf(rotation.x)*length;
+		add.z += cosf(rotation.x)*length;
 		//注視点を見つめる円運動をカメラ座標に代入
 		position.x = target.x + add.x;
 		position.y = target.y + add.y;
 		position.z = target.z + add.z;
 #endif // 0
+		Yrot(add);
 	}
+	//左回転
+	if (CheckHitKey(KEY_INPUT_LEFT))
+	{
+		rotation.y -= 3.0f*DX_PI_F / 180.0f;
+#if 0
 
-	//円運動をする座標を求める
+		add.x += cosf(rotation.z)*length;
+		add.y += sinf(rotation.z)*length;
+		add.x += cosf(rotation.y)*length;
+		add.z += sinf(rotation.y)*length;
+		add.y += sinf(rotation.x)*length;
+		add.z += cosf(rotation.x)*length;
+		//注視点を見つめる円運動をカメラ座標に代入
+		position.x = target.x + add.x;
+		position.y = target.y + add.y;
+		position.z = target.z + add.z;
+#endif // 0
+		Yrot(add);
+	}
+	//上回転
+	if (CheckHitKey(KEY_INPUT_UP))
+	{
+		rotation.z += 3.0f*DX_PI_F / 180.0f;
+		rotation.z = min(rotation.z, 1.5f);
+#if 0
+
+		add.x += cosf(rotation.z)*length;
+		add.y += sinf(rotation.z)*length;
+		add.x += cosf(rotation.y)*length;
+		add.z += sinf(rotation.y)*length;
+		add.y += sinf(rotation.x)*length;
+		add.z += cosf(rotation.x)*length;
+		//注視点を見つめる円運動をカメラ座標に代入
+		position.x = target.x + add.x;
+		position.y = target.y + add.y;
+		position.z = target.z + add.z;
+#endif // 0
+		Zrot(add);
+	}
+	//下回転
+	if (CheckHitKey(KEY_INPUT_DOWN))
+	{
+		rotation.z -= 3.0f*DX_PI_F / 180.0f;
+		rotation.z = max(rotation.z, 0);
+
+#if 0
+
+		add.x += cosf(rotation.z)*length;
+		add.y += sinf(rotation.z)*length;
+		add.x += cosf(rotation.y)*length;
+		add.z += sinf(rotation.y)*length;
+		add.y += sinf(rotation.x)*length;
+		add.z += cosf(rotation.x)*length;
+		//注視点を見つめる円運動をカメラ座標に代入
+		position.x = target.x + add.x;
+		position.y = target.y + add.y;
+		position.z = target.z + add.z;
+#endif // 0
+		Zrot(add);
+	}
+#endif // 1
+
 
 	DebugSetColor(255, 255, 255);
 	DebugPrintf(0, 100, "カメラ座標X:%f,Y:%f,Z:%f", position.x, position.y, position.z);
 	DebugPrintf(0, 115, "カメラ角度X:%f,Y:%f,Z:%f", rotation.x, rotation.y, rotation.z);
 
 
-	//注視点を見つめる円運動をカメラ座標に代入
-	//position.x = target.x + add.x;
-	//position.y = target.y + add.y;
-	//position.z = target.z + add.z;
-#endif // 1
-
+	
 }
 
 void Camera::Draw()
@@ -150,6 +153,7 @@ void Camera::Draw()
 	SetCameraPositionAndTarget_UpVecY(position, target);
 }
 
+//Y軸回転(三角関数)
 void Camera::Yrot(VECTOR add)
 {
 	add.x += cosf(rotation.y)*length;
@@ -158,17 +162,15 @@ void Camera::Yrot(VECTOR add)
 	position.x = target.x + add.x;
 	position.y = target.y + add.y;
 	position.z = target.z + add.z;
-	//return add;
 }
 
+//Z軸回転(三角関数)
 void Camera::Zrot(VECTOR add)
 {
-	//VECTOR add = VGet(0, 0, 0);//カメラの注視点に足すための変数
 	add.x += cosf(rotation.z)*length;
 	add.y += sinf(rotation.z)*length;
 
 	position.x = target.x + add.x;
 	position.y = target.y + add.y;
 	position.z = target.z + add.z;
-	//return add;
 }
