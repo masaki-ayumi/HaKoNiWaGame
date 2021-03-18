@@ -7,8 +7,6 @@ Field::Field(SceneBase * scene)
 	assert(hModel > 0);
 	hSkyModel = MV1LoadModel("data\\Stage\\Stage00_sky.mv1");
 	assert(hSkyModel > 0);
-	//int center = MV1SearchFrame(hModel, "Cubes");
-	//MV1SetFrameUserLocalMatrix(hModel, center, MGetRotY(DX_PI_F));
 }
 
 Field::~Field()

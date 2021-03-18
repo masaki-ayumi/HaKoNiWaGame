@@ -7,6 +7,7 @@ public:
 	~Field();
 	void Update();
 	void Draw();
-	int hModel;
-	int hSkyModel;
+
+	int hModel;	//地形モデル用ハンドル
+	int hSkyModel;	//空モデル用ハンドル
 };
