@@ -1,7 +1,7 @@
 #include "field.h"
 #include <assert.h>
 
-Field::Field(SceneBase * scene)
+Field::Field(SceneBase* scene)
 {
 	hModel = MV1LoadModel("data\\BoxStage.mv1");
 	assert(hModel > 0);
