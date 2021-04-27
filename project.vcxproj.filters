@@ -26,9 +26,15 @@
     <ClCompile Include="Library\sceneBase.cpp">
       <Filter>Library</Filter>
     </ClCompile>
-    <ClCompile Include="Source\axis.cpp" />
-    <ClCompile Include="Source\camera.cpp" />
-    <ClCompile Include="Source\field.cpp" />
+    <ClCompile Include="Source\axis.cpp">
+      <Filter>ソースファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\camera.cpp">
+      <Filter>ソースファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\field.cpp">
+      <Filter>ソースファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\sceneFactory.h" />
@@ -59,9 +65,15 @@
     <ClInclude Include="Source\config.h">
       <Filter>TitleScene</Filter>
     </ClInclude>
-    <ClInclude Include="Source\axis.h" />
-    <ClInclude Include="Source\camera.h" />
-    <ClInclude Include="Source\field.h" />
+    <ClInclude Include="Source\axis.h">
+      <Filter>ヘッダーファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\camera.h">
+      <Filter>ヘッダーファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\field.h">
+      <Filter>ヘッダーファイル</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Library">
@@ -78,6 +90,12 @@
     </Filter>
     <Filter Include="common">
       <UniqueIdentifier>{826397a3-7051-44be-b23c-f5dda703c9f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダーファイル">
+      <UniqueIdentifier>{550d4ca6-90ef-48f7-b945-fe015bed2bfd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソースファイル">
+      <UniqueIdentifier>{5854b524-aad2-4b9e-8878-de24272548b4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
