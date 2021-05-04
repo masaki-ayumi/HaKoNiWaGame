@@ -13,4 +13,5 @@ public:
 private:
 	VECTOR position;	//プレイヤーの座標
 	VECTOR rotation;	//プレイヤーの回転
+	int hModel;			//プレイヤーのモデル用ハンドル
 };

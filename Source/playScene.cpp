@@ -4,6 +4,7 @@
 #include "axis.h"
 #include "camera.h"
 #include "field.h"
+#include "player.h"
 
 PlayScene::PlayScene()
 {
@@ -11,6 +12,7 @@ PlayScene::PlayScene()
 	Camera* pCam = CreateGameObject<Camera>();
 	SetDrawOrder(pCam, 1);
 	CreateGameObject<Field>();
+	CreateGameObject<Player>();
 
 }
 
