@@ -11,8 +11,8 @@ PlayScene::PlayScene()
 	CreateGameObject<Axis>();
 	Camera* pCam = CreateGameObject<Camera>();
 	SetDrawOrder(pCam, 1);
-	CreateGameObject<Field>();
 	CreateGameObject<Player>();
+	CreateGameObject<Field>();
 
 }
 
