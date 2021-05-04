@@ -1,5 +1,6 @@
 #include "field.h"
 #include <assert.h>
+#include <DxLib.h>>
 
 Field::Field(SceneBase* scene)
 {
@@ -25,3 +26,13 @@ void Field::Draw()
 	MV1DrawModel(hModel);
 	MV1DrawModel(hSkyModel);
 }
+
+bool Field::CollisoinLine(VECTOR * hit, VECTOR from, VECTOR to)
+{
+	MV1_COLL_RESULT_POLY collision = MV1CollCheck_Line(hModel, -1, from, to);
+	if (collision.HitFlag == 0)
+		return false;
+	*hit = collision.HitPosition;
+	return true;
+}
+
