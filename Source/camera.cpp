@@ -6,7 +6,7 @@ using namespace std;
 
 Camera::Camera(SceneBase * scene)
 {
-	position = VGet(100.0f, 150.f, 500.0f);
+	position = VGet(700.0f, 400.f, -500.0f);
 	target = VGet(0, 0, 0.0f);
 	rotation = VGet(1, 1, 1);
 }
@@ -19,6 +19,8 @@ void Camera::Update()
 {
 
 	VECTOR add = VGet(0, 0, 0);//カメラの注視点に足すための変数
+#if 0 //カメラ回転処理をすべてコメントアウト
+
 
 #if 0//回転行列
 	//右回転
@@ -138,6 +140,10 @@ void Camera::Update()
 		Zrot(add);
 	}
 #endif // 1
+
+
+
+#endif // 0
 
 
 	DebugSetColor(255, 255, 255);
