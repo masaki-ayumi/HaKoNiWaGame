@@ -22,6 +22,28 @@ Player::~Player()
 
 void Player::Update()
 {
+	//ëO
+	if (CheckHitKey(KEY_INPUT_W))
+	{
+
+	}
+	//å„ÇÎ
+	if (CheckHitKey(KEY_INPUT_S))
+	{
+
+	}
+	//ç∂
+	if (CheckHitKey(KEY_INPUT_A))
+	{
+
+	}
+	//âE
+	if (CheckHitKey(KEY_INPUT_D))
+	{
+
+	}
+
+
 	VECTOR upper = VAdd(position, VGet(0, 1000, 0));
 	VECTOR lower = VAdd(position, VGet(0, -1000, 0));
 	VECTOR hitposition;
