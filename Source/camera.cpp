@@ -6,7 +6,9 @@ using namespace std;
 
 Camera::Camera(SceneBase * scene)
 {
-	position = VGet(700.0f, 400.f, -500.0f);
+
+	//position = VGet(700.0f, 400.f, -500.0f);
+	position = VGet(0.0f, 400.f, -400.0f);
 	target = VGet(0, 0, 0.0f);
 	rotation = VGet(1, 1, 1);
 }
@@ -19,7 +21,8 @@ void Camera::Update()
 {
 
 	VECTOR add = VGet(0, 0, 0);//カメラの注視点に足すための変数
-#if 0 //カメラ回転処理をすべてコメントアウト
+
+#if 1 //カメラ回転処理をすべてコメントアウト
 
 
 #if 0//回転行列
@@ -156,7 +159,9 @@ void Camera::Update()
 
 void Camera::Draw()
 {
-	SetCameraPositionAndTarget_UpVecY(position, target);
+	//SetCameraPositionAndTarget_UpVecY(position, target);
+	SetCameraPositionAndTarget_UpVecY(VGet(-6.497849f, 226.679474f, -501.248688f), VGet(210.755630f, 108.688301f, -86.437248f));
+	SetCameraNearFar(8.048284f, 2012.070923f);
 }
 
 //Y軸回転(三角関数)
