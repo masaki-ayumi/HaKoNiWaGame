@@ -11,7 +11,7 @@ Player::Player(SceneBase * scene):GameObject(scene)
 	int centor = MV1SearchFrame(hModel, "全ての親");
 	MV1SetFrameUserLocalMatrix(hModel, centor, MGetRotY(DX_PI_F));
 
-	position = VGet(0, 0, 0);
+	position = VGet(0, 60, 0);
 	rotation = VGet(0, 0, 0);
 }
 
@@ -29,16 +29,16 @@ void Player::Update()
 	//前
 	if (CheckHitKey(KEY_INPUT_W))
 	{
-		//回転値に応じて0.5加速する値
-		VECTOR velocity = VTransform(VGet(0.0, 0.0, 0.5), rotY);
+		//回転値に応じて加速する値
+		VECTOR velocity = VTransform(VGet(0.0, 0.0, 1.5), rotY);
 		//現在の座標に加速した値を加算
 		position = VAdd(position, velocity);
 	}
 	//後ろ
 	if (CheckHitKey(KEY_INPUT_S))
 	{
-		//回転値に応じて-0.5加速する値
-		VECTOR velocity = VTransform(VGet(0.0, 0.0, -0.5), rotY);
+		//回転値に応じて-加速する値
+		VECTOR velocity = VTransform(VGet(0.0, 0.0, -1.5), rotY);
 		//現在の座標に加速した値を加算
 		position = VAdd(position, velocity);
 	}
@@ -56,7 +56,8 @@ void Player::Update()
 	}
 
 
-	VECTOR upper = VAdd(position, VGet(0, 1000, 0));
+	//VECTOR upper = VAdd(position, VGet(0, 1000, 0));
+	VECTOR upper = VAdd(position, VGet(0, 10, 0));
 	VECTOR lower = VAdd(position, VGet(0, -1000, 0));
 	VECTOR hitposition;
 
