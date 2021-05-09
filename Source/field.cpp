@@ -41,3 +41,12 @@ bool Field::CollisoinLine(VECTOR * hit, VECTOR from, VECTOR to)
 	return true;
 }
 
+bool Field::CollisoinSphere(VECTOR * hit, VECTOR position)
+{
+	MV1_COLL_RESULT_POLY_DIM collision = MV1CollCheck_Sphere(hModel, -1, position, 10);
+	DebugSetColor(255, 255, 255);
+	//DebugPrintf(0, 200, "ínå`è’ìÀ:%d", collision.HitNum);
+	//if (collision.HitFlag == 0)
+		//return false;
+	return true;
+}

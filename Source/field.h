@@ -19,6 +19,7 @@ public:
 	/// <param name="to">線分の下限</param>
 	/// <returns>当たっていたらtrueを返す</returns>
 	bool CollisoinLine(VECTOR *hit, VECTOR from, VECTOR to);
+	bool CollisoinSphere(VECTOR *hit, VECTOR position);
 
 	int hModel;	//地形モデル用ハンドル
 	int hSkyModel;	//空モデル用ハンドル
