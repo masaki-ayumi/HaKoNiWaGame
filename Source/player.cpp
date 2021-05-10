@@ -2,6 +2,7 @@
 #include <assert.h>
 #include <DxLib.h>
 #include "field.h"
+#include "debugScreen.h"
 
 
 Player::Player(SceneBase * scene):GameObject(scene)
@@ -11,7 +12,7 @@ Player::Player(SceneBase * scene):GameObject(scene)
 	int centor = MV1SearchFrame(hModel, "全ての親");
 	MV1SetFrameUserLocalMatrix(hModel, centor, MGetRotY(DX_PI_F));
 
-	position = VGet(0, 60, 0);
+	position = VGet(0, 100, 0);
 	rotation = VGet(0, 0, 0);
 }
 
@@ -67,6 +68,13 @@ void Player::Update()
 	{
 		position = hitposition;
 	}
+
+	//球体を使った壁との当たり判定
+	if (pField->CollisoinSphere(&hitposition,position))
+	{
+		position = hitposition;
+	}
+
 }
 
 void Player::Draw()
@@ -77,10 +85,16 @@ void Player::Draw()
 	MATRIX mRotationY = MGetRotY(rotation.y);
 	//回転してから移動
 	MATRIX matrix = MMult(mRotationY, mTranslate);
-
-
-
 	//MV1SetPosition(hModel, position);
 	MV1SetMatrix(hModel, matrix);
 	MV1DrawModel(hModel);
+
+
+
+#if 1	//プレイヤーのデバッグ用
+	DebugSetColor(255, 0, 255);
+	DebugPrintf(0, 50, "自機の座標:X%d,Y%d,Z%d", mTranslate);
+	DrawSphere3D(VAdd(position,VGet(0,10,0)), 10, 32, GetColor(255, 0, 0), GetColor(255, 255, 255), false);
+#endif // 0
+
 }
