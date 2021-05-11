@@ -8,7 +8,8 @@ Camera::Camera(SceneBase * scene)
 {
 
 	//position = VGet(700.0f, 400.f, -500.0f);
-	position = VGet(0.0f, 400.f, -400.0f);
+	//position = VGet(0.0f, 400.f, -400.0f);
+	position = VGet(0.0f, 0.f, 60.0f);
 	target = VGet(0, 0, 0.0f);
 	rotation = VGet(0, 0, 0);
 }
@@ -159,9 +160,13 @@ void Camera::Update()
 
 void Camera::Draw()
 {
-	//SetCameraPositionAndTarget_UpVecY(position, target);
-	SetCameraPositionAndTarget_UpVecY(VGet(-230.462952f, 170.492661f, -11.206726f), VGet(217.512360f, 60.398552f, -153.989639f));
+	SetCameraPositionAndTarget_UpVecY(position, target);
+
+
+#if 0
+	//SetCameraPositionAndTarget_UpVecY(VGet(-230.462952f, 170.492661f, -11.206726f), VGet(217.512360f, 60.398552f, -153.989639f));
 	//SetCameraNearFar(8.048284f, 2012.070923f);
+#endif // 0
 
 }
 
