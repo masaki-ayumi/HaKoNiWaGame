@@ -12,7 +12,7 @@ Player::Player(SceneBase * scene):GameObject(scene)
 	int centor = MV1SearchFrame(hModel, "全ての親");
 	MV1SetFrameUserLocalMatrix(hModel, centor, MGetRotY(DX_PI_F));
 
-	position = VGet(0, 100, 0);
+	position = VGet(0, 0, 0);
 	rotation = VGet(0, 0, 0);
 }
 
@@ -62,6 +62,9 @@ void Player::Update()
 	VECTOR lower = VAdd(position, VGet(0, -1000, 0));
 	VECTOR hitposition;
 
+	
+
+
 	//地形との当たり判定
 	Field* pField = GetScene()->FindGameObject<Field>();
 	if (pField->CollisoinLine(&hitposition, upper, lower))
@@ -95,6 +98,10 @@ void Player::Draw()
 	DebugSetColor(255, 0, 255);
 	DebugPrintf(0, 50, "自機の座標:X%d,Y%d,Z%d", mTranslate);
 	DrawSphere3D(VAdd(position,VGet(0,10,0)), 10, 32, GetColor(255, 0, 0), GetColor(255, 255, 255), false);
+	Player* pPlayer = GetScene()->FindGameObject<Player>();
+	
+	DrawLine3D(position, VAdd(position, VGet(0, 10, 0)), GetColor(255, 0, 0));
+	DrawLine3D(position, VAdd(position, VGet(0, -1000, 0)), GetColor(0, 0, 255));
 #endif // 0
 
 }
