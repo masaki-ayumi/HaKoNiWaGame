@@ -9,7 +9,7 @@ Camera::Camera(SceneBase * scene)
 
 	//position = VGet(700.0f, 400.f, -500.0f);
 	//position = VGet(0.0f, 400.f, -400.0f);
-	position = VGet(0.0f, 0.f, 60.0f);
+	position = VGet(0.0f, 0.f, 45.0f);
 	target = VGet(0, 0, 0.0f);
 	rotation = VGet(0, 0, 0);
 }

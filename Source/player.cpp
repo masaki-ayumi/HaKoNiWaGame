@@ -58,7 +58,7 @@ void Player::Update()
 
 
 	//VECTOR upper = VAdd(position, VGet(0, 1000, 0));
-	VECTOR upper = VAdd(position, VGet(0, 10, 0));
+	VECTOR upper = VAdd(position, VGet(0, 20, 0));
 	VECTOR lower = VAdd(position, VGet(0, -1000, 0));
 	VECTOR hitposition;
 
@@ -97,10 +97,9 @@ void Player::Draw()
 #if 1	//プレイヤーのデバッグ用
 	DebugSetColor(255, 0, 255);
 	DebugPrintf(0, 50, "自機の座標:X%d,Y%d,Z%d", mTranslate);
-	DrawSphere3D(VAdd(position,VGet(0,10,0)), 10, 32, GetColor(255, 0, 0), GetColor(255, 255, 255), false);
-	Player* pPlayer = GetScene()->FindGameObject<Player>();
 	
-	DrawLine3D(position, VAdd(position, VGet(0, 10, 0)), GetColor(255, 0, 0));
+	DrawSphere3D(VAdd(position,VGet(0,10,0)), 10, 32, GetColor(255, 0, 0), GetColor(255, 255, 255), false);
+	DrawLine3D(position, VAdd(position, VGet(0, 20, 0)), GetColor(255, 0, 0));
 	DrawLine3D(position, VAdd(position, VGet(0, -1000, 0)), GetColor(0, 0, 255));
 #endif // 0
 
