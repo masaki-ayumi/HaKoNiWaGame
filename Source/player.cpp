@@ -14,6 +14,8 @@ Player::Player(SceneBase * scene):GameObject(scene)
 
 	position = VGet(0, 0, 0);
 	rotation = VGet(0, 0, 0);
+
+	
 }
 
 Player::~Player()
@@ -23,6 +25,10 @@ Player::~Player()
 
 void Player::Update()
 {
+	Field* pField = GetScene()->FindGameObject<Field>();
+	position = pField->position;
+
+
 	//回転行列
 	MATRIX rotY = MGetRotY(rotation.y);
 
@@ -66,22 +72,23 @@ void Player::Update()
 
 
 	//地形との当たり判定
-	Field* pField = GetScene()->FindGameObject<Field>();
+	//Field* pField = GetScene()->FindGameObject<Field>();
 	if (pField->CollisoinLine(&hitposition, upper, lower))
 	{
-		position = hitposition;
+		//position = hitposition;
 	}
 
 	//球体を使った壁との当たり判定
 	if (pField->CollisoinSphere(&hitposition,position))
 	{
-		position = hitposition;
+		//position = hitposition;
 	}
 
 }
 
 void Player::Draw()
 {
+	
 	//移動行列
 	MATRIX mTranslate = MGetTranslate(position);
 	//Y軸の回転行列
@@ -96,7 +103,7 @@ void Player::Draw()
 
 #if 1	//プレイヤーのデバッグ用
 	DebugSetColor(255, 0, 255);
-	DebugPrintf(0, 50, "自機の座標:X%d,Y%d,Z%d", mTranslate);
+	DebugPrintf(0, 50, "自機の座標:X%f,Y%f,Z%f", position.x,position.y,position.z);
 	DrawSphere3D(VAdd(position,VGet(0,10,0)), 10, 32, GetColor(255, 0, 0), GetColor(255, 255, 255), false);
 	Player* pPlayer = GetScene()->FindGameObject<Player>();
 	
