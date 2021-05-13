@@ -11,6 +11,8 @@ Field::Field(SceneBase* scene)
 	assert(hModel > 0);
 	hSkyModel = MV1LoadModel("data\\Stage\\Stage00_sky.mv1");
 	assert(hSkyModel > 0);
+
+	
 }
 
 Field::~Field()
@@ -21,13 +23,34 @@ Field::~Field()
 
 void Field::Update()
 {
+	int meshNum = 0;
+
+	meshNum = MV1GetMeshNum(hModel);
+
+	VECTOR meshMaxPos;
+	VECTOR meshMinPos;
+	for (int i = 0; i < meshNum; i++)
+	{
+		meshMaxPos = MV1GetMeshMaxPosition(hModel, i);
+		meshMinPos = MV1GetMeshMinPosition(hModel, i);
+
+		position.x = (meshMaxPos.x + meshMinPos.x) / 2;
+		position.y = (meshMaxPos.y + meshMinPos.y) / 2;
+		position.z = (meshMaxPos.z + meshMinPos.z) / 2;
+	}
 }
 
 void Field::Draw()
 {
 	MV1SetPosition(hModel, VGet(0, 0, 0));
+	//ƒƒbƒVƒ…‚ÌÅ‘å‚ÆÅ¬‚Ì•½‹Ï‚ð‚Æ‚Á‚Ä‚»‚±‚ÉˆÚ“®‚µ‚Ä‚Ý‚é
+	//MV1SetPosition(hModel, position);
 	MV1DrawModel(hModel);
 	MV1DrawModel(hSkyModel);
+
+	DebugSetColor(255, 255, 255);
+	DebugPrintf(0, 300, "X:%f,Y:%f,Z:%f", position.x,position.y,position.z);
+
 }
 
 bool Field::CollisoinLine(VECTOR * hit, VECTOR from, VECTOR to)

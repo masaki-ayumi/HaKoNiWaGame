@@ -30,4 +30,5 @@ public:
 
 	int hModel;	//地形モデル用ハンドル
 	int hSkyModel;	//空モデル用ハンドル
+	VECTOR position;
 };
