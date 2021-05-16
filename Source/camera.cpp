@@ -164,7 +164,7 @@ void Camera::Draw()
 
 
 #if 1
-	//SetCameraPositionAndTarget_UpVecY(VGet(-218.179749f, 195.273331f, 26.179993f), VGet(128.975006f, 73.353516f, -200.189423f));
+	SetCameraPositionAndTarget_UpVecY(VGet(-218.179749f, 195.273331f, 26.179993f), VGet(128.975006f, 73.353516f, -200.189423f));
 	//SetCameraNearFar(7.200000f, 1800.000000f);
 
 #endif // 0
