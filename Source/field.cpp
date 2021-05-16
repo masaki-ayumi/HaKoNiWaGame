@@ -23,28 +23,28 @@ Field::~Field()
 
 void Field::Update()
 {
-	int meshNum = 0;
 
-	meshNum = MV1GetMeshNum(hModel);
 
-	VECTOR meshMaxPos;
-	VECTOR meshMinPos;
-	for (int i = 0; i < meshNum; i++)
-	{
-		meshMaxPos = MV1GetMeshMaxPosition(hModel, i);
-		meshMinPos = MV1GetMeshMinPosition(hModel, i);
-
-		position.x = (meshMaxPos.x + meshMinPos.x) / 2;
-		position.y = (meshMaxPos.y + meshMinPos.y) / 2;
-		position.z = (meshMaxPos.z + meshMinPos.z) / 2;
-	}
+	//int meshNum = 0;
+	//meshNum = MV1GetMeshNum(hModel);
+	//VECTOR meshMaxPos;
+	//VECTOR meshMinPos;
+	//for (int i = 0; i < meshNum; i++)
+	//{
+	//	meshMaxPos = MV1GetMeshMaxPosition(hModel, i);
+	//	meshMinPos = MV1GetMeshMinPosition(hModel, i);
+	//
+	//	position.x = (meshMaxPos.x + meshMinPos.x) / 2;
+	//	position.y = (meshMaxPos.y + meshMinPos.y) / 2;
+	//	position.z = (meshMaxPos.z + meshMinPos.z) / 2;
+	//}
 }
 
 void Field::Draw()
 {
-	MV1SetPosition(hModel, VGet(0, 0, 0));
+	MV1SetPosition(hSkyModel, VGet(0, -10000, 0));
 	//ƒƒbƒVƒ…‚ÌÅ‘å‚ÆÅ¬‚Ì•½‹Ï‚ð‚Æ‚Á‚Ä‚»‚±‚ÉˆÚ“®‚µ‚Ä‚Ý‚é
-	//MV1SetPosition(hModel, position);
+	//MV1SetPosition(hSkyModel, position);
 	MV1DrawModel(hModel);
 	MV1DrawModel(hSkyModel);
 
