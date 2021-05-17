@@ -82,6 +82,8 @@ void Player::Update()
 	if (pField->CollisoinSphere(&hitposition,position))
 	{
 		//position = hitposition;
+		DebugSetColor(255, 0, 0);
+		DebugPrintf(0, 10, "•Ç");
 	}
 
 }
