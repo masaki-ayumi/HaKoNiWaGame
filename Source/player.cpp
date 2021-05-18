@@ -70,7 +70,7 @@ void Player::Update()
 
 	//VECTOR upper = VAdd(position, VGet(0, 1000, 0));
 	VECTOR upper = VAdd(position, VGet(0, 50, 0));
-	VECTOR lower = VAdd(position, VGet(0, -100, 0));
+	VECTOR lower = VAdd(position, VGet(0, -50, 0));
 	VECTOR hitposition;
 
 	
@@ -117,7 +117,7 @@ void Player::Draw()
 	DrawSphere3D(VAdd(position,VGet(0,10,0)), 5, 32, GetColor(255, 0, 0), GetColor(255, 255, 255), false);
 	
 	DrawLine3D(position, VAdd(position, VGet(0, 50, 0)), GetColor(255, 0, 0));
-	DrawLine3D(position, VAdd(position, VGet(0, -100, 0)), GetColor(0, 0, 255));
+	DrawLine3D(position, VAdd(position, VGet(0, -50, 0)), GetColor(0, 0, 255));
 #endif // 0
 
 }
