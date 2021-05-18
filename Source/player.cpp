@@ -12,7 +12,7 @@ Player::Player(SceneBase * scene):GameObject(scene)
 	int centor = MV1SearchFrame(hModel, "全ての親");
 	MV1SetFrameUserLocalMatrix(hModel, centor, MGetRotY(DX_PI_F));
 
-	position = VGet(0, 0, 0);
+	position = VGet(0, 60, 0);
 	rotation = VGet(0, 0, 0);
 
 	
@@ -33,6 +33,11 @@ void Player::Update()
 	MATRIX rotY = MGetRotY(rotation.y);
 
 
+	
+	
+	//移動する前の座標を保存
+	VECTOR tempPos = position;
+	
 	//前
 	if (CheckHitKey(KEY_INPUT_W))
 	{
@@ -78,12 +83,15 @@ void Player::Update()
 		position = hitposition;
 	}
 
+
 	//球体を使った壁との当たり判定
 	if (pField->CollisoinSphere(&hitposition,position))
 	{
 		//position = hitposition;
 		DebugSetColor(255, 0, 0);
 		DebugPrintf(0, 10, "壁");
+		//現在の座標に前の座標を代入
+		position = tempPos;
 	}
 
 }
@@ -106,7 +114,7 @@ void Player::Draw()
 #if 1	//プレイヤーのデバッグ用
 	DebugSetColor(255, 0, 255);
 	DebugPrintf(0, 50, "自機の座標:X%f,Y%f,Z%f", position.x,position.y,position.z);
-	//DrawSphere3D(VAdd(position,VGet(0,10,0)), 10, 32, GetColor(255, 0, 0), GetColor(255, 255, 255), false);
+	DrawSphere3D(VAdd(position,VGet(0,10,0)), 5, 32, GetColor(255, 0, 0), GetColor(255, 255, 255), false);
 	
 	DrawLine3D(position, VAdd(position, VGet(0, 50, 0)), GetColor(255, 0, 0));
 	DrawLine3D(position, VAdd(position, VGet(0, -100, 0)), GetColor(0, 0, 255));
