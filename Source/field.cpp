@@ -67,11 +67,11 @@ bool Field::CollisoinLine(VECTOR * hit, VECTOR from, VECTOR to)
 bool Field::CollisoinSphere(VECTOR * hit, VECTOR position)
 {
 	position = VAdd(position, VGet(0, 10, 0));
-	MV1_COLL_RESULT_POLY_DIM collision = MV1CollCheck_Sphere(hModel, -1, position, 10);
+	MV1_COLL_RESULT_POLY_DIM collision = MV1CollCheck_Sphere(hModel, -1, position, 5);
 	DebugSetColor(255, 255, 255);
 	DebugPrintf(0, 220, "’nŒ`‹…Õ“Ë:%d", collision.HitNum);
 	if (collision.HitNum == 0)
 		return false;
-	*hit = collision.Dim->HitPosition;
+	//*hit = collision.Dim->HitPosition;
 	return true;
 }
