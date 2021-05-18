@@ -18,16 +18,14 @@ Player::Player(SceneBase * scene):GameObject(scene)
 	
 }
 
+	
 Player::~Player()
 {
-	
 }
+
 
 void Player::Update()
 {
-	Field* pField = GetScene()->FindGameObject<Field>();
-	//position = pField->position;
-
 
 	//回転行列
 	MATRIX rotY = MGetRotY(rotation.y);
@@ -68,7 +66,6 @@ void Player::Update()
 	}
 
 
-	//VECTOR upper = VAdd(position, VGet(0, 1000, 0));
 	VECTOR upper = VAdd(position, VGet(0, 50, 0));
 	VECTOR lower = VAdd(position, VGet(0, -50, 0));
 	VECTOR hitposition;
@@ -77,7 +74,7 @@ void Player::Update()
 
 
 	//地形との当たり判定
-	//Field* pField = GetScene()->FindGameObject<Field>();
+	Field* pField = GetScene()->FindGameObject<Field>();
 	if (pField->CollisoinLine(&hitposition, upper, lower))
 	{
 		position = hitposition;
@@ -96,9 +93,9 @@ void Player::Update()
 
 }
 
+	
 void Player::Draw()
 {
-	
 	//移動行列
 	MATRIX mTranslate = MGetTranslate(position);
 	//Y軸の回転行列
