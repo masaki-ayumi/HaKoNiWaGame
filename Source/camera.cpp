@@ -4,13 +4,13 @@
 #include <algorithm>
 using namespace std;
 
-Camera::Camera(SceneBase * scene)
+Camera::Camera(SceneBase * scene):GameObject(scene)
 {
 
 	//position = VGet(700.0f, 400.f, -500.0f);
-	//position = VGet(0.0f, 400.f, -400.0f);
-	position = VGet(0.0f, 0.f, 60.0f);
-	target = VGet(0, 0, 0.0f);
+	position = VGet(-454.428131f, 78.392891f, 79.835190f);
+	//position = VGet(0, 50, 400);
+	target = VGet(0, 0, 0);
 	rotation = VGet(0, 0, 0);
 }
 
@@ -23,14 +23,14 @@ void Camera::Update()
 
 	VECTOR add = VGet(0, 0, 0);//カメラの注視点に足すための変数
 
-#if 1 //カメラ回転処理をすべてコメントアウト
+#if 0 //カメラ回転処理をすべてコメントアウト
 
 
-#if 0//回転行列
+#if 1//回転行列
 	//右回転
 	if (CheckHitKey(KEY_INPUT_RIGHT))
 	{
-		rotation.y += 3.0f*DX_PI_F / 180.0f;
+		rotation.y += 1.0f*DX_PI_F / 180.0f;
 
 		MATRIX rotY = MGetRotY(rotation.y);
 		position = VTransform(position, rotY);
@@ -39,7 +39,7 @@ void Camera::Update()
 	//左回転
 	if (CheckHitKey(KEY_INPUT_LEFT))
 	{
-		rotation.y -= 3.0f*DX_PI_F / 180.0f;
+		rotation.y -= 1.0f*DX_PI_F / 180.0f;
 
 		MATRIX rotY = MGetRotY(rotation.y);
 		position = VTransform(position, rotY);
@@ -47,7 +47,7 @@ void Camera::Update()
 	}
 	if (CheckHitKey(KEY_INPUT_UP))
 	{
-		rotation.x += 3.0f*DX_PI_F / 180.0f;
+		rotation.x += 1.0f*DX_PI_F / 180.0f;
 		rotation.x = min(rotation.x, 1.5f);
 
 		MATRIX rotX = MGetRotX(rotation.x);
@@ -56,7 +56,7 @@ void Camera::Update()
 	}
 	if (CheckHitKey(KEY_INPUT_DOWN))
 	{
-		rotation.x -= 3.0f*DX_PI_F / 180.0f;
+		rotation.x -= 1.0f*DX_PI_F / 180.0f;
 		rotation.x = max(rotation.x, -1.5f);
 
 		MATRIX rotX = MGetRotX(rotation.x);
@@ -64,7 +64,7 @@ void Camera::Update()
 
 	}
 #endif // 1
-#if 1 //三角関数を使った回転
+#if 0 //三角関数を使った回転
 	//右回転
 	if (CheckHitKey(KEY_INPUT_RIGHT))
 	{
@@ -149,6 +149,62 @@ void Camera::Update()
 
 #endif // 0
 
+	//先生のやつ
+	 //毎フレーム1度回転
+	float degRot = 1.0f;
+	float radRot = degRot / 180.0f * 3.1415926f;
+	//回転前後の座標（x,y,z）
+	float posX, posY, posZ;     //変換前のvec
+	float posX2, posY2, posZ2;  //変換後のvec
+	posX = position.x;
+	posY = position.y;
+	posZ = position.z;
+	//右回転
+	if (CheckHitKey(KEY_INPUT_RIGHT))
+	{
+		posX2 = (posX * cos(radRot)) + (posZ * sin(radRot));
+		posY2 = posY;
+		posZ2 = (posZ * cos(radRot)) - (posX * sin(radRot));
+		position.x = posX2;
+		position.y = posY2;
+		position.z = posZ2;
+	}
+	//左回転
+	if (CheckHitKey(KEY_INPUT_LEFT))
+	{
+		posX2 = (posX * cos(-radRot)) + (posZ * sin(-radRot));
+		posY2 = posY;
+		posZ2 = (posZ * cos(-radRot)) - (posX * sin(-radRot));
+		position.x = posX2;
+		position.y = posY2;
+		position.z = posZ2;
+	}
+	//上回転
+	if (CheckHitKey(KEY_INPUT_UP))
+	{
+		posX2 = (posX * cos(radRot)) - (posY * sin(radRot));
+		posY2 = (posX * sin(radRot)) + (posY * cos(radRot));
+		posZ2 = posZ;
+		position.x = posX2;
+		position.y = posY2;
+		position.z = posZ2;
+	}
+	//下回転
+	if (CheckHitKey(KEY_INPUT_DOWN))
+	{
+		posX2 = (posX * cos(-radRot)) - (posY * sin(-radRot));
+		posY2 = (posX * sin(-radRot)) + (posY * cos(-radRot));
+		posZ2 = posZ;
+		position.x = posX2;
+		position.y = posY2;
+		position.z = posZ2;
+	}
+	
+
+
+
+
+
 
 	DebugSetColor(255, 255, 255);
 	DebugPrintf(0, 100, "カメラ座標X:%f,Y:%f,Z:%f", position.x, position.y, position.z);
@@ -163,9 +219,14 @@ void Camera::Draw()
 	SetCameraPositionAndTarget_UpVecY(position, target);
 
 
-#if 1
-	SetCameraPositionAndTarget_UpVecY(VGet(-218.179749f, 195.273331f, 26.179993f), VGet(128.975006f, 73.353516f, -200.189423f));
-	//SetCameraNearFar(7.200000f, 1800.000000f);
+#if 0
+	
+	SetCameraPositionAndTarget_UpVecY(VGet(-454.428131f, 78.392891f, 79.835190f), VGet(0.000000f, 0.000031f, 0.000000f));
+	SetCameraNearFar(7.200000f, 1800.000000f);
+
+
+
+
 
 #endif // 0
 
