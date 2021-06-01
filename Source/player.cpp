@@ -12,7 +12,7 @@ Player::Player(SceneBase * scene):GameObject(scene)
 	int centor = MV1SearchFrame(hModel, "ëSÇƒÇÃêe");
 	MV1SetFrameUserLocalMatrix(hModel, centor, MGetRotY(DX_PI_F));
 
-	position = VGet(0, 60, 0);
+	position = VGet(-150, -100, 150);
 	rotation = VGet(0, 0, 0);
 
 	

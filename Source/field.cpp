@@ -4,9 +4,10 @@
 #include "debugScreen.h"
 
 
-Field::Field(SceneBase* scene)
+
+Field::Field(SceneBase* scene):GameObject(scene)
 {
-	hModel = MV1LoadModel("data\\BoxStage_06.mv1");
+	hModel = MV1LoadModel("data\\BoxStage_13.mv1");
 	//hModel = MV1LoadModel("data\\Stage\\Stage00.mv1");
 	assert(hModel > 0);
 	hSkyModel = MV1LoadModel("data\\Stage\\Stage00_sky.mv1");
