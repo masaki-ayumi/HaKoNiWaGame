@@ -1,6 +1,9 @@
 #pragma once
 #include "../Library/gameObject.h"
 
+/// <summary>
+/// カメラクラス
+/// </summary>
 class Camera :public GameObject
 {
 public:
@@ -8,13 +11,10 @@ public:
 	~Camera();
 	void Update();
 	void Draw();
-	void Yrot(VECTOR add);
-	void Zrot(VECTOR add);
 	
 private:
 	VECTOR position;
 	VECTOR rotation;
-	VECTOR target;
+	VECTOR target;	//カメラの注視点
 	
-	float length= 500.0f;//円運動の半径(注視点からの距離)
 };
