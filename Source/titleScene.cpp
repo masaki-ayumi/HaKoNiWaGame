@@ -23,6 +23,6 @@ void TitleScene::Draw()
 {
 	SceneBase::Draw();
 
-	DrawString(0, 0, "TITLE SCENE", GetColor(255,255,255));
-	DrawString(100, 400, "Push [P]Key To Play", GetColor(255, 255, 255));
+	DrawString(10, 10, "TITLE SCENE", GetColor(255,255,255));
+	DrawString(10, 50, "Push [P]Key To Play", GetColor(255, 255, 255));
 }

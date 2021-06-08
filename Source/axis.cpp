@@ -2,6 +2,8 @@
 
 void Axis::Draw()
 {
+
+#if 0	//デバッグ表示
 	//座標軸の描画
 	DrawLine3D(VGet(-200, 0, 0), VGet(200, 0, 0), GetColor(255, 0, 0));
 	DrawLine3D(VGet(0, -200, 0), VGet(0, 200, 0), GetColor(0, 255, 0));
@@ -11,5 +13,6 @@ void Axis::Draw()
 	DrawCone3D(VGet(200, 0, 0), VGet(180, 0, 0), 5.0f, 20, GetColor(255, 0, 0), GetColor(255, 0, 0), TRUE);
 	DrawCone3D(VGet(0, 200, 0), VGet(0, 180, 0), 5.0f, 20, GetColor(0, 255, 0), GetColor(0, 255, 0), TRUE);
 	DrawCone3D(VGet(0, 0, 200), VGet(0, 0, 180), 5.0f, 20, GetColor(0, 0, 255), GetColor(0, 0, 255), TRUE);
+#endif // 0
 
 }
