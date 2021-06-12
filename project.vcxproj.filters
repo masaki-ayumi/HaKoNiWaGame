@@ -27,16 +27,16 @@
       <Filter>Library</Filter>
     </ClCompile>
     <ClCompile Include="Source\axis.cpp">
-      <Filter>ソースファイル</Filter>
+      <Filter>Axis</Filter>
     </ClCompile>
     <ClCompile Include="Source\camera.cpp">
-      <Filter>ソースファイル</Filter>
+      <Filter>Camera</Filter>
     </ClCompile>
     <ClCompile Include="Source\field.cpp">
-      <Filter>ソースファイル</Filter>
+      <Filter>Field</Filter>
     </ClCompile>
     <ClCompile Include="Source\player.cpp">
-      <Filter>ソースファイル</Filter>
+      <Filter>Player</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -69,16 +69,16 @@
       <Filter>TitleScene</Filter>
     </ClInclude>
     <ClInclude Include="Source\axis.h">
-      <Filter>ヘッダーファイル</Filter>
+      <Filter>Axis</Filter>
     </ClInclude>
     <ClInclude Include="Source\camera.h">
-      <Filter>ヘッダーファイル</Filter>
+      <Filter>Camera</Filter>
     </ClInclude>
     <ClInclude Include="Source\field.h">
-      <Filter>ヘッダーファイル</Filter>
+      <Filter>Field</Filter>
     </ClInclude>
     <ClInclude Include="Source\player.h">
-      <Filter>ヘッダーファイル</Filter>
+      <Filter>Player</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -97,11 +97,17 @@
     <Filter Include="common">
       <UniqueIdentifier>{826397a3-7051-44be-b23c-f5dda703c9f2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ヘッダーファイル">
-      <UniqueIdentifier>{550d4ca6-90ef-48f7-b945-fe015bed2bfd}</UniqueIdentifier>
+    <Filter Include="Axis">
+      <UniqueIdentifier>{64c9ae98-ce58-4092-a952-62a0a268f86b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソースファイル">
-      <UniqueIdentifier>{5854b524-aad2-4b9e-8878-de24272548b4}</UniqueIdentifier>
+    <Filter Include="Camera">
+      <UniqueIdentifier>{aff17e22-1bfc-4d82-aee5-534b9442f586}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Field">
+      <UniqueIdentifier>{6355a3e5-c2cd-47fa-a074-57108e60f244}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Player">
+      <UniqueIdentifier>{353ec23c-9971-43fb-90f5-1a86d62fafa8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
