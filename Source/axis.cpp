@@ -3,7 +3,7 @@
 void Axis::Draw()
 {
 
-#if 0	//デバッグ表示
+#if 1	//デバッグ表示
 	//座標軸の描画
 	DrawLine3D(VGet(-200, 0, 0), VGet(200, 0, 0), GetColor(255, 0, 0));
 	DrawLine3D(VGet(0, -200, 0), VGet(0, 200, 0), GetColor(0, 255, 0));
