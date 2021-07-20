@@ -20,64 +20,64 @@ void Camera::Update()
 {
 
 	//毎フレーム1度回転
-	float degRot = 1.0f;
-	float radRot = degRot / 180.0f * DX_PI_F;
+	float degreeRotation = 1.0f;
+	float radianRotation = degreeRotation / 180.0f * DX_PI_F;
 
 	//回転前後の座標（x,y,z）
-	float posX, posY, posZ;     //変換前の座標
-	float posX2, posY2, posZ2;  //変換後の座標
+	float positionX, positionY, positionZ;     //変換前の座標
+	float positionX2, positionY2, positionZ2;  //変換後の座標
 
-	posX = position.x;
-	posY = position.y;
-	posZ = position.z;
+	positionX = position.x;
+	positionY = position.y;
+	positionZ = position.z;
 
 	//左回転
 	if (CheckHitKey(KEY_INPUT_LEFT))
 	{
 		//回転行列
-		posX2 = (posX * cos(radRot)) + (posZ * sin(radRot));
-		posY2 = posY;
-		posZ2 = (posZ * cos(radRot)) - (posX * sin(radRot));
+		positionX2 = (positionX * cos(radianRotation)) + (positionZ * sin(radianRotation));
+		positionY2 = positionY;
+		positionZ2 = (positionZ * cos(radianRotation)) - (positionX * sin(radianRotation));
 
-		position.x = posX2;
-		position.y = posY2;
-		position.z = posZ2;
+		position.x = positionX2;
+		position.y = positionY2;
+		position.z = positionZ2;
 	}
 	//右回転
 	if (CheckHitKey(KEY_INPUT_RIGHT))
 	{
 		//回転行列
-		posX2 = (posX * cos(-radRot)) + (posZ * sin(-radRot));
-		posY2 = posY;
-		posZ2 = (posZ * cos(-radRot)) - (posX * sin(-radRot));
+		positionX2 = (positionX * cos(-radianRotation)) + (positionZ * sin(-radianRotation));
+		positionY2 = positionY;
+		positionZ2 = (positionZ * cos(-radianRotation)) - (positionX * sin(-radianRotation));
 
-		position.x = posX2;
-		position.y = posY2;
-		position.z = posZ2;
+		position.x = positionX2;
+		position.y = positionY2;
+		position.z = positionZ2;
 	}
 	//下回転
 	if (CheckHitKey(KEY_INPUT_DOWN))
 	{
 		//回転行列
-		posX2 = (posX * cos(radRot)) - (posY * sin(radRot));
-		posY2 = (posX * sin(radRot)) + (posY * cos(radRot));
-		posZ2 = posZ;
+		positionX2 = (positionX * cos(radianRotation)) - (positionY * sin(radianRotation));
+		positionY2 = (positionX * sin(radianRotation)) + (positionY * cos(radianRotation));
+		positionZ2 = positionZ;
 
-		position.x = posX2;
-		position.y = posY2;
-		position.z = posZ2;
+		position.x = positionX2;
+		position.y = positionY2;
+		position.z = positionZ2;
 	}
 	//上回転
 	if (CheckHitKey(KEY_INPUT_UP))
 	{
 		//回転行列
-		posX2 = (posX * cos(-radRot)) - (posY * sin(-radRot));
-		posY2 = (posX * sin(-radRot)) + (posY * cos(-radRot));
-		posZ2 = posZ;
+		positionX2 = (positionX * cos(-radianRotation)) - (positionY * sin(-radianRotation));
+		positionY2 = (positionX * sin(-radianRotation)) + (positionY * cos(-radianRotation));
+		positionZ2 = positionZ;
 
-		position.x = posX2;
-		position.y = posY2;
-		position.z = posZ2;
+		position.x = positionX2;
+		position.y = positionY2;
+		position.z = positionZ2;
 	}
 
 
